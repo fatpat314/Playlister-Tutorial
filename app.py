@@ -1,3 +1,5 @@
+#ALWAYS RUN MONGOD WHEN RUNNING THE SERVER!!!!!!!
+
 from flask import Flask, render_template
 from pymongo import MongoClient
 
