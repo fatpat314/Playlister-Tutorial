@@ -1,0 +1,33 @@
+<!-- templates/playlists_new.html -->
+{% extends 'base.html' %}
+
+{% block contest %}
+<form method='POST' action='/playlists'>
+    <fieldset>
+        <legend>New Playlist</legend>
+        <!-- TITLE -->
+        <p>
+            <label for='title'>Title</label><br>
+            <input id='playlist-title' type='text' name='title' />
+        </p>
+    <!-- description -->
+        <p>
+            <label for='description'>Desctiption</label><br>
+            <input id='description' type='text' name='description' />
+        </p>
+
+    <!-- Video links -->
+        <p>
+            <label for='playlist-videos'>Videos</label><br>
+            <p>https://www.youtube.com/watch?v=j7zXbNFBoLc</p>
+            <testarea id='playlist-videos' name='videos' row='10'></textarea>
+        </p>
+
+    </fieldset>
+
+    <!-- Button -->
+    <p>
+        <button type='submit'>Save Playlist</button>
+    </p>
+</form>
+{% endblock %}
