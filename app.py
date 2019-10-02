@@ -53,6 +53,7 @@ def playlists_submit():
         'description': request.form.get('description'),
         'videos': request.form.get('videos').split()
     }
+    print(playlist)
     #playlist.insert_one(playlist)
     #print(request.form.to_dict())
     playlist_id = playlists.insert_one(playlist).inserted_id
@@ -98,10 +99,16 @@ def comments_new():
         'content': request.form.get('content'),
         'playlist_id': ObjectId(request.form.get('playlist_id'))
     }
+
     print(comment)
     comment_id = comments.insert_one(comment).inserted_id
     return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
 
-
+@app.route('/playlists/comments/<comment_id>', methods=['POST'])
+def comments_delete(comment_id):
+    """Action to delete a comment"""
+    comment = comments.find_one({'_id': ObjectID(comment_id)})
+    comments.delete_one({'_id': ObjectId(comment_id)})
+    return redirect(url_for('playlists_show', playlist_id=comment.get('playlist_id')))
 
     #return render_template('playlists_new.html')
