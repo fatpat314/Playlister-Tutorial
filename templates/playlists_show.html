@@ -1,4 +1,7 @@
 <!-- templates/playlists_show.html -->
+
+<a href='/'>Back to Home</a>
+
 {% extends 'base.html' %}
 
 {% block content %}
@@ -21,6 +24,14 @@
 
         <!-- Comment form -->
         {% include 'partials/comment_form.html'}
+
+        <hr>
+
+        <!-- Show Comments -->
+        {% for comment in comments %}
+            {% include 'partials/comment.html' %}
+        {% endfor %}
+        
     </div>
 </div>
 {% endblock %}
